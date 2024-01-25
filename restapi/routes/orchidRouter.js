@@ -8,9 +8,10 @@ orchidRouter.route('/')
     .get((req, res) => {
         Orchids.find({})
             .then((orchids) => {
-                res.statusCode = 200;
-                res.setHeader('Content-Type', 'application/json');
-                res.json(orchids);
+                // res.statusCode = 200;
+                // res.setHeader('Content-Type', 'application/json');
+                // res.json(orchids);
+                res.render('orchids', {orchids: orchids})
             })
     })
     .post((req, res) => {

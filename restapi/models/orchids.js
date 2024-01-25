@@ -15,10 +15,20 @@ const orchidSchema = new Schema({
         type: Number,
         required: true
     },
+    original:
+    {
+        type: String,
+        required: true
+    },
     isNatural: {
         type: Boolean,
         required: true
-    }
+    },
+    color:
+    {
+        type: String,
+        required: true
+    },
 }, { timestamps: true });
 
 const Orchids = mongoose.model('orchids', orchidSchema)
