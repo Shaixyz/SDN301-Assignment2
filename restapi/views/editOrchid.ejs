@@ -1,0 +1,121 @@
+<html>
+
+<body>
+
+    <form method="post">
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Name</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <div class="control">
+                        <input class="input is-info" name="name" type="text" value="<%= orchid.name %>">
+                    </div>
+                    <p class="help is-danger">
+                        This field is required
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Image</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <div class="control">
+                        <input class="input is-info" name="image" type="text" value="<%= orchid.image %>">
+                    </div>
+                    <p class="help is-danger">
+                        This field is required
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Price</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <div class="control">
+                        <input class="input is-info" name="price" type="number" value="<%= orchid.price %>">
+                    </div>
+                    <p class="help is-danger">
+                        This field is required
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Original</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <div class="control">
+                        <input class="input is-info" name="original" type="text" value="<%= orchid.original %>">
+                    </div>
+                    <p class="help is-danger">
+                        This field is required
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Is Natural</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <div class="control">
+                        <label class="radio">
+                            <input type="radio" name="isNatural" value="true" <%=orchid.isNatural ? 'checked' : '' %>>
+                            True
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="isNatural" value="false" <%=!orchid.isNatural ? 'checked' : '' %>>
+                            False
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label">Color</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <div class="control">
+                        <input class="input is-info" name="color" type="text" value="<%= orchid.color %>">
+                    </div>
+                    <p class="help is-danger">
+                        This field is required
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="field is-horizontal">
+            <div class="field-body">
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-primary" type="submit">
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</body>
+
+</html>

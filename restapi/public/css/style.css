@@ -1,0 +1,22 @@
+/* styles.css */
+body{
+    font-family: Arial, sans-serif;
+    background-color: antiquewhite;
+}
+table {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 6rem;
+    background-color: antiquewhite;
+    font-family: "Inter", sans-serif;
+  }
+.orchid-image {
+    max-width: 100%;
+    max-height: 200px;
+  }
+  .title{
+    color: darkorange;
+    display: flex;
+    align-content: left;
+  }

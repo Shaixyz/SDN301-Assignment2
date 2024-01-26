@@ -3,49 +3,139 @@
 
 <head>
   <title>Orchids List</title>
-  <style>
-    .container{
-   display: inline-flex;
-   align-items: center;
-   
-    }
-    .orchid-card {
-      border: 1px solid #ddd;
-      padding: 10px;
-      margin: 10px;
-      width: 300px;
-      text-align: center;
-      
-    }
-    .orchid-image {
-      max-width: 100%;
-      max-height: 200px;
-      margin-bottom: 10px;
-      
-    }
-  </style>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.10.5/css/bulma.min.css">
+<link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
-  <h1>Orchids List</h1>
+  <div class="container">
+    <h1 class="title">Orchids List</h1>
 
-  <% orchids.forEach((orchid)=> { %>
-    <div class="container">
-      <div>
-    <div class="orchid-card">
-      <strong>
-        <%= orchid.name %>
-      </strong>
-      <img class="orchid-image" src="<%= orchid.image %>" alt="<%= orchid.name %> Image">
-      <p>Price: <%= orchid.price %>
-      </p>
-      <p>Color: <%= orchid.color %>
-      </p>
-      <p>Original: <%= orchid.original %>
-      </p>
-    </div>
+    <!-- Orchids Form -->
+    <form method="post" action="/orchids">
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">Name</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <input class="input is-info" name="name" type="text" placeholder="Enter orchid name">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">Image URL</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <input class="input is-info" name="image" type="text" placeholder="Enter image URL">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">Price</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <input class="input is-info" name="price" type="text">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">Original</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <input class="input is-info" name="original" type="text">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">Is Natural</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <label class="checkbox">
+                <input type="checkbox" name="isNatural" value="true">
+                True
+              </label>
+              <input type="checkbox" name="isNatural" value="false">
+                false
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">Color</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <input class="input is-info" name="color" type="text">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-primary" type="submit">Add Orchid</button>
+        </div>
+      </div>
+    </form>
+
+    <!-- Orchids Table -->
+    <table class="table">
+      <thead>
+        <tr class="title">
+          <th>Image</th>
+          <th>Name</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% orchids.forEach((orchid)=> { %>
+          <tr>
+            <td>
+              <figure class="image is-64x64">
+                <img class="orchid-image" src="<%= orchid.image %>" alt="<%= orchid.name %> Image">
+              </figure>
+            </td>
+            <td>
+              <%= orchid.name %>
+            </td>
+            <td>
+              <div class="buttons are-small">
+                <a href="/orchids/edit/<%= orchid._id %>" class="button is-warning is-light">Edit</a>
+                <a href="/orchids/delete/<%= orchid._id %>" class="button is-danger is-light">Delete</a>
+              </div>
+            </td>
+          </tr>
+          <% }); %>
+      </tbody>
+    </table>
   </div>
-    <% }); %>
 </body>
 
 </html>
