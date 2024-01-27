@@ -1,11 +1,12 @@
 <!-- views/orchids.ejs -->
+<!DOCTYPE html>
 <html>
 
 <head>
   <title>Orchids List</title>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.10.5/css/bulma.min.css">
-<link rel="stylesheet" href="/css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -13,94 +14,99 @@
     <h1 class="title">Orchids List</h1>
 
     <!-- Orchids Form -->
-    <form method="post" action="/orchids">
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">Name</label>
-        </div>
-        <div class="field-body">
-          <div class="field">
-            <div class="control">
-              <input class="input is-info" name="name" type="text" placeholder="Enter orchid name">
-            </div>
+    <form method="post">
+      <div class="py-12">
+        <div class="mx-auto max-w-screen-sm rounded-lg border bg-card text-card-foreground shadow-sm" data-v0-t="card">
+          <div class="flex flex-col space-y-1.5 p-4">
+            <h3 class="text-2xl font-semibold whitespace-nowrap leading-none tracking-tight">Add Product</h3>
+            <p class="text-sm text-muted-foreground">Add the product details in the form below and click Add Product.
+            </p>
           </div>
-        </div>
-      </div>
-
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">Image URL</label>
-        </div>
-        <div class="field-body">
-          <div class="field">
-            <div class="control">
-              <input class="input is-info" name="image" type="text" placeholder="Enter image URL">
-            </div>
+          <div class="p-6">
+            <div class="grid w-full items-center gap-4">
+              <div class="space-y-2">
+                <label
+                  class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  for="name">
+                  Name
+                </label>
+                <input
+                  class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  name="name" placeholder="Enter product name" />
+              </div>
+              <div class="space-y-2">
+                <label
+                  class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  for="image">
+                  Image URL
+                </label>
+                <input
+                  class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  name="image" placeholder="Enter image URL" />
+              </div>
+              <div class="grid w-full grid-cols-2 gap-4">
+                <div class="space-y-2">
+                  <label
+                    class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    for="price">
+                    Price
+                  </label>
+                  <input type="number"
+                    class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    name="price" placeholder="Enter product price" />
+                </div>
+                <div class="space-y-2">
+                  <label
+                    class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    for="original">
+                    Original
+                  </label>
+                  <input type="text"
+                    class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    name="original" placeholder="Enter original price" />
+                </div>
+              </div>
+              <div class="space-y-2">
+                <label
+                  class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  for="is-natural">
+                  Is Natural
+                </label>
+                <div class="flex items-center space-x-4">
+                  <div>
+                    <input type="radio" id="true" class="form-radio h-4 w-4 text-gray-600" name="isNatural"
+                      value="true" />
+                    <label for="true" class="ml-2">
+                      True
+                    </label>
+                  </div>
+                  <div>
+                    <input type="radio" id="false" class="form-radio h-4 w-4 text-gray-600" name="isNatural"
+                      value="false" />
+                    <label for="false" class="ml-2">
+                      False
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="space-y-2">
+                <label
+                  class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  for="color">
+                  Color
+                </label>
+                <input
+                  class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  name="color" placeholder="Enter product color" />
+              </div>
           </div>
-        </div>
-      </div>
-
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">Price</label>
-        </div>
-        <div class="field-body">
-          <div class="field">
-            <div class="control">
-              <input class="input is-info" name="price" type="text">
-            </div>
+          <div class="flex items-center p-6">
+            <button
+              class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-black text-white hover:bg-primary/90 h-10 px-4 py-2"
+              type="submit">
+              Add Product
+            </button>
           </div>
-        </div>
-      </div>
-
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">Original</label>
-        </div>
-        <div class="field-body">
-          <div class="field">
-            <div class="control">
-              <input class="input is-info" name="original" type="text">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">Is Natural</label>
-        </div>
-        <div class="field-body">
-          <div class="field">
-            <div class="control">
-              <label class="checkbox">
-                <input type="checkbox" name="isNatural" value="true">
-                True
-              </label>
-              <input type="checkbox" name="isNatural" value="false">
-                false
-              </label>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">Color</label>
-        </div>
-        <div class="field-body">
-          <div class="field">
-            <div class="control">
-              <input class="input is-info" name="color" type="text">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="field is-grouped">
-        <div class="control">
-          <button class="button is-primary" type="submit">Add Orchid</button>
         </div>
       </div>
     </form>

@@ -8,7 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const orchidRouter = require('./routes/orchidRouter')
 const categoryRouter = require('./routes/categoryRouter')
-// const { default: mongoose } = require('mongoose');
+
 var app = express();
 
 const url = 'mongodb://127.0.0.1:27017/OrchidApi';
@@ -28,10 +28,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/users', usersRouter);
 // app.use('/', orchidRouter);
 app.use('/orchids', orchidRouter);
 app.use('/categories',categoryRouter);
-app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
