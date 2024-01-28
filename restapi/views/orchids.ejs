@@ -1,140 +1,62 @@
-<!-- views/orchids.ejs -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <title>Orchids List</title>
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.10.5/css/bulma.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
+<script>
+  function confirmDelete() {
+    return confirm("Bạn có muốn xóa không?");
+  }
+</script>
 
 <body>
   <div class="container">
-    <h1 class="title">Orchids List</h1>
-
-    <!-- Orchids Form -->
-    <form method="post">
-      <div class="py-12">
-        <div class="mx-auto max-w-screen-sm rounded-lg border bg-card text-card-foreground shadow-sm" data-v0-t="card">
-          <div class="flex flex-col space-y-1.5 p-4">
-            <h3 class="text-2xl font-semibold whitespace-nowrap leading-none tracking-tight">Add Product</h3>
-            <p class="text-sm text-muted-foreground">Add the product details in the form below and click Add Product.
-            </p>
-          </div>
-          <div class="p-6">
-            <div class="grid w-full items-center gap-4">
-              <div class="space-y-2">
-                <label
-                  class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  for="name">
-                  Name
-                </label>
-                <input
-                  class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                  name="name" placeholder="Enter product name" />
-              </div>
-              <div class="space-y-2">
-                <label
-                  class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  for="image">
-                  Image URL
-                </label>
-                <input
-                  class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                  name="image" placeholder="Enter image URL" />
-              </div>
-              <div class="grid w-full grid-cols-2 gap-4">
-                <div class="space-y-2">
-                  <label
-                    class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                    for="price">
-                    Price
-                  </label>
-                  <input type="number"
-                    class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                    name="price" placeholder="Enter product price" />
-                </div>
-                <div class="space-y-2">
-                  <label
-                    class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                    for="original">
-                    Original
-                  </label>
-                  <input type="text"
-                    class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                    name="original" placeholder="Enter original price" />
-                </div>
-              </div>
-              <div class="space-y-2">
-                <label
-                  class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  for="is-natural">
-                  Is Natural
-                </label>
-                <div class="flex items-center space-x-4">
-                  <div>
-                    <input type="radio" id="true" class="form-radio h-4 w-4 text-gray-600" name="isNatural"
-                      value="true" />
-                    <label for="true" class="ml-2">
-                      True
-                    </label>
-                  </div>
-                  <div>
-                    <input type="radio" id="false" class="form-radio h-4 w-4 text-gray-600" name="isNatural"
-                      value="false" />
-                    <label for="false" class="ml-2">
-                      False
-                    </label>
-                  </div>
-                </div>
-              </div>
-              <div class="space-y-2">
-                <label
-                  class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  for="color">
-                  Color
-                </label>
-                <input
-                  class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                  name="color" placeholder="Enter product color" />
-              </div>
-          </div>
-          <div class="flex items-center p-6">
-            <button
-              class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-black text-white hover:bg-primary/90 h-10 px-4 py-2"
-              type="submit">
-              Add Product
-            </button>
-          </div>
-        </div>
-      </div>
-    </form>
+    <div class="cf-title-01">
+      <h1>Orchids List</h1>
+    </div>
+    <button type="button" class="btn btn-custom add-orchid-btn" data-toggle="modal" data-target="#addOrchidModal">
+      Add Orchid
+    </button>
 
     <!-- Orchids Table -->
     <table class="table">
       <thead>
-        <tr class="title">
-          <th>Image</th>
-          <th>Name</th>
-          <th>Actions</th>
+        <tr class="table=column">
+          <th class="name-column">Name</th>
+          <th class="image-column">Image</th>
+          <th class="price-column">Price</th>
+          <th class="actions-column">Actions</th>
         </tr>
       </thead>
       <tbody>
-        <% orchids.forEach((orchid)=> { %>
+        <% orchids.forEach((orchid, index)=> { %>
           <tr>
+            <td>
+              <%= orchid.name %>
+            </td>
             <td>
               <figure class="image is-64x64">
                 <img class="orchid-image" src="<%= orchid.image %>" alt="<%= orchid.name %> Image">
               </figure>
             </td>
             <td>
-              <%= orchid.name %>
+              <%= orchid.price %>
             </td>
             <td>
-              <div class="buttons are-small">
-                <a href="/orchids/edit/<%= orchid._id %>" class="button is-warning is-light">Edit</a>
-                <a href="/orchids/delete/<%= orchid._id %>" class="button is-danger is-light">Delete</a>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle actions-btn" type="button" data-toggle="dropdown"
+                  aria-expanded="false" data-index="<%= index %>">
+
+                </button>
+                <div class="dropdown-menu" data-index="<%= index %>">
+                  <a href="/orchids/edit/<%= orchid._id %>" class="dropdown-item">Edit</a>
+                  <a href="/orchids/delete/<%= orchid._id %>" class="dropdown-item"
+                    onclick="return confirmDelete()">Delete</a>
+                </div>
               </div>
             </td>
           </tr>
@@ -142,6 +64,144 @@
       </tbody>
     </table>
   </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="addOrchidModal" tabindex="-1" role="dialog" aria-labelledby="addOrchidModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form method="post">
+            <div class="py-1">
+              <div class="mx-auto max-w-screen-sm rounded-lg border bg-card text-card-foreground shadow-sm"
+                data-v0-t="card">
+                <div class="flex flex-col space-y-1.5 p-4">
+                  <h3 class="text-2xl font-semibold whitespace-nowrap leading-none tracking-tight">Add
+                    Product</h3>
+                  <p class="text-sm text-muted-foreground">Add the product details in the form below
+                    and click Add Product.
+                  </p>
+                </div>
+                <div class="p-6">
+                  <div class="grid w-full items-center gap-4">
+                    <div class="space-y-2">
+                      <label
+                        class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                        for="name">
+                        Name
+                      </label>
+                      <input
+                        class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                        name="name" placeholder="Enter product name" />
+                    </div>
+                    <div class="space-y-2">
+                      <label
+                        class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                        for="image">
+                        Image URL
+                      </label>
+                      <input
+                        class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                        name="image" placeholder="Enter image URL" />
+                    </div>
+                    <div class="grid w-full grid-cols-2 gap-4">
+                      <div class="space-y-2">
+                        <label
+                          class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                          for="price">
+                          Price
+                        </label>
+                        <input type="number"
+                          class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                          name="price" placeholder="Enter product price" />
+                      </div>
+                      <div class="space-y-2">
+                        <label
+                          class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                          for="original">
+                          Original
+                        </label>
+                        <input type="text"
+                          class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                          name="original" placeholder="Enter original price" />
+                      </div>
+                    </div>
+                    <div class="space-y-2">
+                      <label
+                        class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                        for="is-natural">
+                        Is Natural
+                      </label>
+                      <div class="flex items-center space-x-4">
+                        <div>
+                          <input type="radio" id="true" class="form-radio h-4 w-4 text-gray-600" name="isNatural"
+                            value="true" />
+                          <label for="true" class="ml-2">
+                            True
+                          </label>
+                        </div>
+                        <div>
+                          <input type="radio" id="false" class="form-radio h-4 w-4 text-gray-600" name="isNatural"
+                            value="false" />
+                          <label for="false" class="ml-2">
+                            False
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="space-y-2">
+                      <label
+                        class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                        for="color">
+                        Color
+                      </label>
+                      <input
+                        class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                        name="color" placeholder="Enter product color" />
+                    </div>
+                  </div>
+                  <div class="flex items-center pt-6">
+                    <button
+                      class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-black text-white hover:bg-primary/90 h-10 px-4 py-2"
+                      type="submit">
+                      Add Product
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      // Show dropdown menu on button click for the clicked row
+      $(".actions-btn").click(function () {
+        var index = $(this).data("index");
+        $(".dropdown-menu").hide();
+        $(".dropdown-menu[data-index=" + index + "]").toggle();
+      });
+
+      // Hide dropdown menus when clicking outside of them
+      $(document).click(function (event) {
+        if (!$(event.target).closest(".dropdown").length) {
+          $(".dropdown-menu").hide();
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
