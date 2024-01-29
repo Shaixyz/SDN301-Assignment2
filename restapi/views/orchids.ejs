@@ -3,15 +3,12 @@
 
 <head>
   <title>Orchids List</title>
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
+
 </head>
-<script>
-  function confirmDelete() {
-    return confirm("Bạn có muốn xóa không?");
-  }
-</script>
 
 <body>
   <div class="container">
@@ -26,8 +23,8 @@
     <table class="table">
       <thead>
         <tr class="table=column">
-          <th class="name-column">Name</th>
           <th class="image-column">Image</th>
+          <th class="name-column">Name</th>
           <th class="price-column">Price</th>
           <th class="actions-column">Actions</th>
         </tr>
@@ -35,17 +32,18 @@
       <tbody>
         <% orchids.forEach((orchid, index)=> { %>
           <tr>
-            <td>
-              <%= orchid.name %>
-            </td>
-            <td>
-              <figure class="image is-64x64">
+            <td class="table-cell orchid-image-column">
+              <figure class="orchid-image-container">
                 <img class="orchid-image" src="<%= orchid.image %>" alt="<%= orchid.name %> Image">
               </figure>
             </td>
-            <td>
+            <td class="table-cell orchid-name-column">
+              <%= orchid.name %>
+            </td>
+            <td class="table-cell orchid-price-column">
               <%= orchid.price %>
             </td>
+
             <td>
               <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle actions-btn" type="button" data-toggle="dropdown"
@@ -63,6 +61,9 @@
           <% }); %>
       </tbody>
     </table>
+    <button onclick="scrollToTop()" class="back-to-top-btn" title="Go to top">
+      Up
+    </button>
   </div>
 
   <!-- Modal -->
@@ -76,7 +77,9 @@
           </button>
         </div>
         <div class="modal-body">
-          <form method="post">
+
+          <!-- Add Form  -->
+          <form method="post" onsubmit="return validateForm();" name="addProductForm">
             <div class="py-1">
               <div class="mx-auto max-w-screen-sm rounded-lg border bg-card text-card-foreground shadow-sm"
                 data-v0-t="card">
@@ -118,7 +121,8 @@
                         </label>
                         <input type="number"
                           class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                          name="price" placeholder="Enter product price" />
+                          name="price" placeholder="Enter product price" step="0.01" />
+
                       </div>
                       <div class="space-y-2">
                         <label
@@ -128,7 +132,8 @@
                         </label>
                         <input type="text"
                           class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                          name="original" placeholder="Enter original price" />
+                          name="original" id="originalInput" placeholder="Enter original"
+                          oninput="this.value = this.value.replace(/[0-9]/g, '')" />
                       </div>
                     </div>
                     <div class="space-y-2">
@@ -160,9 +165,10 @@
                         for="color">
                         Color
                       </label>
-                      <input
+                      <input type="text"
                         class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                        name="color" placeholder="Enter product color" />
+                        name="color" id="colorInput" placeholder="Enter product color"
+                        oninput="this.value = this.value.replace(/[0-9]/g, '')" />
                     </div>
                   </div>
                   <div class="flex items-center pt-6">
@@ -180,10 +186,34 @@
       </div>
     </div>
   </div>
-
+  <script>
+    function confirmDelete() { return confirm("Bạn có muốn xóa không?"); }</script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    function validateForm() {
+      var name = document.forms["addProductForm"]["name"].value;
+      var image = document.forms["addProductForm"]["image"].value;
+      var price = document.forms["addProductForm"]["price"].value;
+      var original = document.forms["addProductForm"]["original"].value;
+      var color = document.forms["addProductForm"]["color"].value;
+
+      if (name == "" || image == "" || price == "" || original == "" || color == "") {
+        alert("Please fill out all fields");
+        return false;
+      }
+    }
+  </script>
+  <script>
+
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+  </script>
 
   <script>
     $(document).ready(function () {
