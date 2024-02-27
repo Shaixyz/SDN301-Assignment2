@@ -217,14 +217,12 @@
 
   <script>
     $(document).ready(function () {
-      // Show dropdown menu on button click for the clicked row
       $(".actions-btn").click(function () {
         var index = $(this).data("index");
         $(".dropdown-menu").hide();
         $(".dropdown-menu[data-index=" + index + "]").toggle();
       });
 
-      // Hide dropdown menus when clicking outside of them
       $(document).click(function (event) {
         if (!$(event.target).closest(".dropdown").length) {
           $(".dropdown-menu").hide();
